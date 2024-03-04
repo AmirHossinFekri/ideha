@@ -1,8 +1,10 @@
+import { PhotoEntity } from 'src/photos/entities/photos.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -20,6 +22,9 @@ export class UserEntity {
 
   @Column({ type: String, nullable: false })
   password: string;
+
+  @OneToMany('PhotoEntity', 'user')
+  photos: PhotoEntity[];
 
   @CreateDateColumn()
   createAt: Date;
