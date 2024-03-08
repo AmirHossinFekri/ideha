@@ -18,5 +18,11 @@ export class UsersService {
     }
   }
 
-  async;
+  async findById(id: string) {
+    try {
+      return await this.USER.findOne({ where: { id } });
+    } catch (error) {
+      return null;
+    }
+  }
 }
