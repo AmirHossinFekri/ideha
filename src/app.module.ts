@@ -8,6 +8,7 @@ import { PhotosModule } from './photos/photos.module';
 import { PhotoEntity } from './photos/entities/photos.entity';
 import { PropertiesModule } from './properties/properties.module';
 import { PropertyEntity } from './properties/entity/property.entity';
+import { FilesController } from './files/files.controller';
 
 @Module({
   imports: [
@@ -22,10 +23,12 @@ import { PropertyEntity } from './properties/entity/property.entity';
       entities: [UserEntity, PhotoEntity, PropertyEntity],
       synchronize: true,
     }),
+
     UsersModule,
     AuthModule,
     PhotosModule,
     PropertiesModule,
   ],
+  controllers: [FilesController],
 })
 export class AppModule {}
