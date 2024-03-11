@@ -9,6 +9,8 @@ import { PhotoEntity } from './photos/entities/photos.entity';
 import { PropertiesModule } from './properties/properties.module';
 import { PropertyEntity } from './properties/entity/property.entity';
 import { FilesController } from './files/files.controller';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -23,7 +25,9 @@ import { FilesController } from './files/files.controller';
       entities: [UserEntity, PhotoEntity, PropertyEntity],
       synchronize: true,
     }),
-
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     UsersModule,
     AuthModule,
     PhotosModule,

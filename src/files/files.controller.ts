@@ -11,7 +11,7 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 
 const storage = diskStorage({
-  destination: './tmp',
+  destination: './public/upload',
   filename: (req, file, cb) => {
     const name = file.originalname.split('.')[0];
     const extension = extname(file.originalname);
@@ -27,8 +27,8 @@ const storage = diskStorage({
 export class FilesController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', { storage }))
-  uploadFile(@UploadedFile() file) {
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
     console.log(file);
-    return new HttpException('فایل با موفقیت آپلود شد ', HttpStatus.CREATED);
+    return new HttpException(file, HttpStatus.CREATED);
   }
 }

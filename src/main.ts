@@ -5,8 +5,11 @@ import { ExceptionsLoggerFilter } from './exceptions-logger/exceptions-logger.fi
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
   app.useGlobalFilters(new ExceptionsLoggerFilter());
+
   app.useGlobalPipes(new ValidationPipe());
+
   await app.listen(3000);
 }
 bootstrap();
