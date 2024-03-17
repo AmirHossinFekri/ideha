@@ -1,4 +1,13 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { registerDTO } from './dto/register.dto';
 import { AuthGuard } from '@nestjs/passport';
@@ -20,5 +29,10 @@ export class AuthController {
       id: req.user['id'],
       username: req.user['username'],
     });
+  }
+
+  @Get('/')
+  sendHello() {
+    return new HttpException('سلام عجیجم', HttpStatus.ACCEPTED);
   }
 }
