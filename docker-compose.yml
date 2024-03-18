@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nestjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USERNAME: root
+      DB_PASSWORD: obOQVAQGUSn7KpG
+      DB_NAME: idehaDB
+      JWT_SECRET: w&bQ!^ejJGt98N$z^Masdg^hAS^AFhafk
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: obOQVAQGUSn7KpG
+      MYSQL_DATABASE: idehaDB
+    volumes:
+      - ./data:/var/lib/mysql
