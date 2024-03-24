@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '3000:3000'
+      - '3300:3000'
     environment:
       DB_HOST: mysql
       DB_PORT: 3306
@@ -19,7 +19,7 @@ services:
   mysql:
     image: mysql:latest
     ports:
-      - '3306:3306'
+      - '3336:3306'
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: idehaDB
